@@ -38,15 +38,7 @@ class Yatzy
   end
 
   def self.two_pair(dice)
-    n = 0
-    6.downto(1).inject(0) do |score, number|
-      if dice.count(number) >= 2
-        n += 1
-        score += number
-        score *= 2 if n == 2
-      end
-      score
-    end
+    6.downto(1).inject(0) { |score, number| dice.count(number) >= 2 ? score + number * 2 : score }
   end
 
   def self.three_of_a_kind(dice)
